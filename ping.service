@@ -1,0 +1,20 @@
+[Unit]
+Description="The ping script"
+Requires=network.service
+#Want=network.service # in soft dependeincy 
+StartLimitIntervalSec=10000
+StartLimitBrust=5
+
+[Service]
+Type=simpe # it cant be oneshot 
+ExecStartPre=/home/centos/first_service.dir/messg.sh
+ExecStart=/home/centos/first_service.dir/ping.sh
+ExecStartPost=/home/centos/first_service.dir/after_messg.sh
+ExecStop=/home/centos/first_service.dir/ping.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=20
+TimeoutStopSec=20
+#RuntimeMaxSec=2m
+[Install]
+WantedBy=multi-user.target
