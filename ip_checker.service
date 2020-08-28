@@ -1,0 +1,16 @@
+[Unit]
+Description="The owncloud ip_checker"
+#Want=network.service # in soft dependeincy 
+StartLimitIntervalSec=10000
+StartLimitBrust=5
+
+[Service]
+ExecStart=/home/pi/Desktop/myscripts/owncloud_ip_checker/ip_checker.sh
+ExecStop=/home/pi/Desktop/myscripts/owncloud_ip_checker/ip_checker.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=20
+TimeoutStopSec=20
+#RuntimeMaxSec=2m
+[Install]
+WantedBy=multi-user.target
